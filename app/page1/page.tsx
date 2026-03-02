@@ -62,6 +62,13 @@ const toggleGoal = (goal: string) => {
       );
 };
   return (
+    <div>
+      <head>
+        <title>FromUStoMe | Your Breakup Reality Check</title>
+        <link rel="icon" href="/logo.jpg" />
+        <meta name="description" content="A student project to help you move on." />
+      </head>
+    
     <main className="min-h-screen bg-[#020617] text-slate-200 p-8 flex flex-col items-center">
     { showform1 &&
       <div className="max-w-2xl w-full space-y-12">
@@ -165,7 +172,7 @@ const toggleGoal = (goal: string) => {
     {
      showform2 && (
   <div className="w-full max-w-2xl animate-in fade-in slide-in-from-bottom-8 duration-1000">
-    {/* Sweet AI Message */}
+   
     <div className="relative p-[1px] rounded-3xl bg-gradient-to-b from-rose-400/30 to-indigo-500/10">
       <div className="bg-[#020617]/90 backdrop-blur-xl p-8 rounded-[23px] border border-white/5 shadow-2xl">
         <div className="flex justify-center mb-4 text-2xl">✨</div>
@@ -257,5 +264,6 @@ const toggleGoal = (goal: string) => {
 )}
     
     </main>
+    </div>
   );
 }

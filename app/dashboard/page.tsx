@@ -74,6 +74,12 @@ const Certificate = ({ memoryKey, userNote, hurdle, completedTasks, onClose }: {
   onClose: () => void 
 }) => {
   return (
+    <div>
+      <head>
+        <title>FromUStoMe | Your Breakup Reality Check</title>
+        <link rel="icon" href="/logo.jpg" />
+        <meta name="description" content="A student project to help you move on." />
+      </head>
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/90 backdrop-blur-xl animate-in fade-in zoom-in duration-500">
       
      
@@ -123,7 +129,7 @@ const Certificate = ({ memoryKey, userNote, hurdle, completedTasks, onClose }: {
               <div className="mt-8 pt-6 border-t border-slate-200">
                 <p className="text-[10px] text-slate-400 mb-6">I have reclaimed my time, my energy, and my peace. I choose to never look back.</p>
                 
-                {/* Self-Signature Area */}
+               
                 <div className="space-y-1">
                   <p className="font-serif text-2xl italic text-slate-900 border-b border-slate-400 inline-block px-2">
                     {memoryKey}
@@ -158,11 +164,18 @@ const Certificate = ({ memoryKey, userNote, hurdle, completedTasks, onClose }: {
         </div>
       </div>
     </div>
+    </div>
   );
 };
 
 
    return( 
+    <div> 
+      <head>
+        <title>FromUStoMe | Your Breakup Reality Check</title>
+        <link rel="icon" href="/logo.jpg" />
+        <meta name="description" content="A student project to help you move on." />
+      </head>
     <main className={`transition-all duration-[4000ms] min-h-screen ease-in-out ${
   totalProgress === 100
     ? "bg-blue-500 text-white" 
@@ -427,6 +440,6 @@ const Certificate = ({ memoryKey, userNote, hurdle, completedTasks, onClose }: {
         </div>
       </footer>
     </main>
-    
+    </div>
    )
 }

@@ -2,6 +2,13 @@ import React from 'react';
 
 const DisclaimerPage = () => {
   return (
+    <div>
+      <head>
+        <title>FromUStoMe | Your Breakup Reality Check</title>
+        <link rel="icon" href="/logo.jpg" />
+        <meta name="description" content="A student project to help you move on." />
+      </head>
+    
     <div className="max-w-2xl mx-auto my-12 bg-white p-8 rounded-3xl shadow-sm border border-gray-100 font-sans">
       
       
@@ -72,6 +79,7 @@ const DisclaimerPage = () => {
         </footer>
 
       </div>
+    </div>
     </div>
   );
 };

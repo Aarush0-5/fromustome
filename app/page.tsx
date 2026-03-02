@@ -25,8 +25,7 @@ export default function Home() {
   }
   return (
     consent ?  <div className="max-w-2xl mx-auto my-12 bg-white p-8 rounded-3xl shadow-sm border border-gray-100 font-sans">
-      
-      {/* Icon & Title */}
+    
       <div className="mb-8 text-center">
         <div className="inline-flex items-center justify-center w-12 h-12 bg-indigo-100 text-indigo-600 rounded-full mb-4">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="w-6 h-6">
@@ -84,6 +83,12 @@ export default function Home() {
       </div>
       
     </div> :
+    <div>
+       <head>
+        <title>FromUStoMe | Your Breakup Reality Check</title>
+        <link rel="icon" href="/logo.jpg" />
+        <meta name="description" content="A student project to help you move on." />
+      </head>
     <main className="min-h-screen bg-[#020617] flex flex-col items-center justify-center p-6 text-center relative overflow-hidden">
      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(30,58,138,0.15)_0%,_rgba(2,6,23,1)_70%)]" />
 
@@ -138,5 +143,6 @@ export default function Home() {
       <div className="absolute top-1/4 left-1/4 w-1 h-1 bg-white opacity-10 rounded-full" />
       <div className="absolute bottom-1/3 right-1/4 w-1 h-1 bg-white opacity-20 rounded-full" />
     </main>
+    </div>
   );
 }
