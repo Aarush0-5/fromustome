@@ -175,15 +175,14 @@ const toggleGoal = (goal: string) => {
       </div>
     </div>
 
-    {/* Goals Selection */}
-    <div className="mt-20 space-y-8 pb-20">
+   <div className="mt-20 space-y-8 pb-20">
       <div className="text-center space-y-3">
         <h3 className="text-2xl font-semibold text-slate-200">Planting the Seeds</h3>
         <p className="text-slate-400 text-sm italic">
           Select a few goals the AI suggested, or write your own below.
         </p>
 
-        {/* This is the corrected Mapping logic */}
+      
         <div className="flex flex-wrap justify-center gap-3 pt-6">
           {goalinput && goalinput.length > 0 ? (
             goalinput.map((goal, index) => {
@@ -212,7 +211,7 @@ const toggleGoal = (goal: string) => {
         </div>
       </div>
 
-      {/* Manual Goal Entry */}
+     
       <div className="space-y-4 pt-4">
         <div className="group relative">
           <textarea
