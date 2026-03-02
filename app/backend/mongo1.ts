@@ -38,10 +38,22 @@ export async function getRecoveryData(memoryKey: string) {
 
   if (!user) return null;
 
+  
   return {
     success: true,
-    data: JSON.parse(JSON.stringify(user))
-  }
+    data: {
+      reasons: user.reasons || "",
+      mainReason: user.mainReason || "",
+      note: user.note || "",
+      
+      goals: Array.isArray(user.goals) 
+        ? user.goals.map((g: any) => ({
+            text: typeof g === 'string' ? g : g.text, 
+            completed: !!g.completed 
+          })) 
+        : []
+    }
+  };
 }
 
 export async function updateGoalStatus(memoryKey: string, updatedGoals: any[]) {
