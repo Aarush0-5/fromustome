@@ -14,7 +14,7 @@ const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || "");
 export async function analyzeBreakup(formData: formData) {
   try {
   
-    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash-lite", generationConfig: { responseMimeType: "application/json" } });
+    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash", generationConfig: { responseMimeType: "application/json" } });
 
     const prompt = `
       You are a specialized breakup recovery coach. Analyze this situation:
@@ -28,9 +28,9 @@ export async function analyzeBreakup(formData: formData) {
       
       User's Story: """${formData.rawStory}"""
 
-      Provide exactly 6 "Reality Checks" (harsh truths the user needs to hear to stay away from their ex) and 
-      And one sweet note addressing the user in a personal way. Along with this based on their personal story suggest 3 goals they can set to overcome it, keep the goals smaller and achieveable which helps them heal and significant enough to feel growth.
-      Format the response as a JSON object with keys: "realityChecks" ,"personalMessage" and "goals": ["goal1", "goal2" , "goal3"].
+      Provide exactly 4 "Reality Checks" (harsh truths the user needs to hear to stay away from their ex) and 
+      And one sweet note addressing the user in a personal way. 
+      Format the response as a JSON object with keys: "realityChecks" ,"personalMessage".
     `;
 
    

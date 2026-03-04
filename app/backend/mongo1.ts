@@ -2,24 +2,51 @@
 
 import clientPromise from "./mongo";
 
+interface CustomGoal {
+  text: string;
+  completed: boolean
+  completedCount: number,
+  targetDays: number;
+}
 
-export async function saveRecoveryData(memoryKey: string, reasons: string, goals: string[], note: string, mainReason: string) {
+
+export async function savePhaseGoals(memoryKey: string, goalId: string) {
+  const client = await clientPromise;
+  const db = client.db("Healing_project");
+  const safeMemoryKey = String(memoryKey);
+
+ 
+  const result = await db.collection("users").updateOne(
+    { memoryKey: safeMemoryKey },
+    { 
+      $addToSet: { completedGoalIds: goalId },
+    },
+    { upsert: true }
+  );
+
+  return { 
+    success: true, 
+    message: "Progress anchored." 
+  };
+}
+
+export async function saveRecoveryData(memoryKey: string, reasons: string, goals: CustomGoal[], note: string, ncStartDate: string, selectedTriggers: string[], initialUrgeLevel: number,currentUrgeLevel: number ,advice: string) {
   const client = await clientPromise;
   const db = client.db("Healing_project"); 
-  
-  
   const safeMemoryKey = String(memoryKey); 
-  
-  
-
   const result = await db.collection("users").updateOne(
     { memoryKey: safeMemoryKey }, 
     { 
       $set: { 
         reasons: reasons, 
         goals: goals,     
-        mainReason: mainReason,
-        note: note
+        ncStartDate: ncStartDate,
+        selectedTriggers: selectedTriggers,
+        completedActionIds: [],
+        initialUrgeLevel: initialUrgeLevel,
+        currentUrgeLevel: currentUrgeLevel,
+        note: note,
+        advice: advice,
       },
     },
     { upsert: true }
@@ -42,21 +69,57 @@ export async function getRecoveryData(memoryKey: string) {
   return {
     success: true,
     data: {
+      advice: user.advice,
       reasons: user.reasons || "",
-      mainReason: user.mainReason || "",
+      ncStartDate: user.ncStartDate || "",
+      selectedTrigger: user.selectedTriggers,
       note: user.note || "",
-      
       goals: Array.isArray(user.goals) 
         ? user.goals.map((g: any) => ({
             text: typeof g === 'string' ? g : g.text, 
-            completed: !!g.completed 
+            completed: !!g.completed ,
+            completedCount: g.completedCount,
+           targetDays: g.targetDays
           })) 
-        : []
+        : [],
+      checkedIds: user.completedActionIds || [],
+      initialUrgeLevel: user.initialUrgeLevel ,
+      currentUrgeLevel: user.currentUrgeLevel
     }
   };
 }
 
 export async function updateGoalStatus(memoryKey: string, updatedGoals: any[]) {
+  try {
+    const client = await clientPromise;
+    const db = client.db("Healing_project");
+     const result = await db.collection("users").updateOne(
+      { memoryKey: String(memoryKey) },
+      { $set: { goals: updatedGoals } }
+    );
+
+    return { success: result.modifiedCount > 0 };
+  } catch (e) {
+    console.error("Failed to update goal:", e);
+    return { success: false };
+  }
+}
+ export async function updateUrgeLevel (memoryKey: string, urgeLevel: number){
+  try {
+    const client = await clientPromise;
+    const db = client.db("Healing_project");
+     const result = await db.collection("users").updateOne(
+      { memoryKey: String(memoryKey) },
+      { $set: { currentUrgeLevel: urgeLevel} }
+    );
+
+    return { success: result.modifiedCount > 0 };
+  } catch (e) {
+    console.error("Failed to update goal:", e);
+    return { success: false };
+  }
+ }
+export async function updateActionStatus(memoryKey: string, updatedIds: any[]) {
   try {
     const client = await clientPromise;
     const db = client.db("Healing_project");
@@ -66,12 +129,28 @@ export async function updateGoalStatus(memoryKey: string, updatedGoals: any[]) {
 
     const result = await db.collection("users").updateOne(
       { memoryKey: String(memoryKey) },
-      { $set: { goals: updatedGoals } }
+      { $set: { completedActionIds: updatedIds } }
     );
 
     return { success: result.modifiedCount > 0 };
   } catch (e) {
     console.error("Failed to update goal:", e);
     return { success: false };
+  }
+}
+
+export async function UpdateReasons(memoryKey: string, reasons: string[]){
+  try{
+    const client = await clientPromise;
+    const db = client.db("Healing_project");
+    const result = await db.collection('users').updateOne(
+      {memoryKey: String(memoryKey)},
+      {
+       $push: { reasons: { $each: reasons } } as any
+      }
+    );
+   return { success: result.modifiedCount > 0 || ''};
+  }catch {
+    
   }
 }
