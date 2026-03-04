@@ -310,7 +310,7 @@ const toggleGoal = (goal: string) => {
              <p>Set a few personal goals for yourself which you'd like to follow along with the designed ones!</p>
             <div className="space-y-4">
               {customGoals.map((goal, index) => (
-                <div key={index} className="flex gap-2 items-center group">
+                <div key={index} className="flex flex-col lg:flex-row gap-2 items-center group">
                   <input
                     className="flex-1 bg-black/40 border border-slate-800 p-4 rounded-xl outline-none focus:border-rose-500/50 text-slate-200"
                     placeholder="Goal (e.g., Meditate)"
