@@ -307,7 +307,7 @@ const toggleGoal = (goal: string) => {
      {showform2 && (
         <div className="w-full max-w-2xl space-y-8 animate-in fade-in slide-in-from-bottom-8">
           <div className="p-8 rounded-3xl bg-[#020617]/90 border border-white/5 shadow-2xl">
-           <h2 className="flex jusitfy-center">✨</h2>
+           <h2 className="flex justyfy-center mb-2">✨</h2>
             <h2 className="text-xl italic text-center">"{personalMessage} "</h2>
           </div>
 
