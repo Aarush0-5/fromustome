@@ -204,11 +204,17 @@ const toggleGoal = (goal: string) => {
             </div>
             <div className="flex flex-col gap-2">
               <label className="text-sm font-medium text-slate-400">Current urge to reach out (1-10)</label>
-                <input 
-                  type="text"  
-                  value={formData.urgeLevel}
-                  onChange={(e) => setFormData({...formData, urgeLevel: parseInt(e.target.value)})}
-                  className="w-full h-auto p-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-indigo-500"
+               <input 
+                  type="number" 
+                  value={formData.urgeLevel || ""} 
+                  onChange={(e) => {
+                    const value = e.target.value;
+                    setFormData({
+                      ...formData, 
+                      urgeLevel: parseInt(value)
+                    });
+                  }}
+                  className="w-full h-auto p-2 bg-slate-800 rounded-lg"
                 />
             </div>
             
