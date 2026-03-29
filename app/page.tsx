@@ -53,7 +53,26 @@ export default function Home() {
             </div>
           </Link>
 
-
+          <Link href="/the_second_project/page0" className="group relative">
+            <div className="h-full p-8 bg-[#0a0a0e]/60 backdrop-blur-xl border border-white/5 rounded-3xl transition-all duration-500 group-hover:border-teal-500/30 group-hover:shadow-[0_0_40px_rgba(45,212,191,0.1)]">
+              <div className="flex flex-col h-full space-y-6">
+                <div className="w-12 h-12 rounded-2xl bg-teal-500/10 flex items-center justify-center border border-teal-500/20 text-teal-400 font-mono">
+                  02
+                </div>
+                <div>
+                  <h2 className="text-2xl font-light tracking-wider text-white mb-3">The Myriad Project</h2>
+                  <p className="text-slate-400 leading-relaxed text-sm font-light">
+                    Harnessing 10,000 simulations to navigate life-design choices. Utilize IPIP psychometrics and behavioral modeling to visualize the trajectory of your decisions before they are made.
+                  </p>
+                </div>
+                <div className="pt-4 mt-auto">
+                  <span className="text-xs font-mono uppercase tracking-[0.3em] text-teal-400 group-hover:text-teal-300 flex items-center">
+                    Initiate Simulation <span className="ml-2 transform group-hover:translate-x-2 transition-transform">→</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </Link>
         </div>
       </section>
     </main>
