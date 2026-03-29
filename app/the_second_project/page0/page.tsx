@@ -20,13 +20,14 @@ interface Score{
 export default function home_of_myriad () {
     const [userAnswers, setUserAnswers] = useState<Record<number, number>>({})
     const [loading, setLoading] = useState(false)
+    const [processing, setProcessing]= useState(false)
     const [response , setResponse]= useState<string>("")
     const [showResults, setShowResults] = useState(false)
     const [analysis , setAnalysis] = useState<AnalysisInterFace | null>(null)
     const [scores, setScores]= useState<Score []>([])
     const [consent2, setConsent2]= useState(true)
 
-    const questions = ["Am the life of the party","Feel little concern for others","Am always prepared","Get stressed out easily","Have a rich vocabulary", "Don't talk a lot", "Am interested in people", "Leave my belongings around", "Am relaxed most of the times", "Have difficulty understanding abstract ideas", "Feel comfortable around people", "Insult people", "Pay attention to details", "Worry about things","Have a vivid imagination", "Keep in the background", "Sumpathize with others' feelings", "Make a mess of things", "Seldomly feel blue", "Am not interested in abstract ideas", "Start conversations", "Am not interested in other people's problems", "Get chores done right away","Am easily disturbed", "Have excellent ideas", "Have little to say", "Have a soft heart", "Often forget to put things at their proper place", "Get upset easily", "Do not have a good imagination", "Talk to a lot of different people at parties","Am not really interested in others", "Like to keep things in order", "Change my mood a lot", "am quick to understand things", "Don't like to draw attention to myself", "Take time out for others", "Shirk my duties","Have frequent mood swings", "Use difficult words on others", "Don't mind being the centre of attractions", " feel other's emotion", "Follow a schedule", "Get irritated easily", "Spend time reflecting on things", "Am quiet around strangers", "Make people feel at ease", "Am exacting in my work", "Often feel blue", "Am full of ideas"]
+    const questions = ["Am the life of the party","Feel little concern for others","Am always prepared","Get stressed out easily","Have a rich vocabulary", "Don't talk a lot", "Am interested in people", "Leave my belongings around", "Am relaxed most of the times", "Have difficulty understanding abstract ideas", "Feel comfortable around people", "Insult people", "Pay attention to details", "Worry about things","Have a vivid imagination", "Love to stay in the background", "Sympathize with others' feelings", "Make a mess of things", "Seldomly feel blue", "Am not interested in abstract ideas", "Start conversations", "Am not interested in other people's problems", "Get chores done right away","Am easily disturbed", "Have excellent ideas", "Have little to say", "Have a soft heart", "Often forget to put things at their proper place", "Get upset easily", "Do not have a good imagination", "Talk to a lot of different people at parties","Am not really interested in others", "Like to keep things in order", "Change my mood a lot", "am quick to understand things", "Don't like to draw attention to myself", "Take time out for others", "Shirk my duties","Have frequent mood swings", "Use difficult words on others", "Don't mind being the centre of attractions", " feel other's emotion", "Follow a schedule", "Get irritated easily", "Spend time reflecting on things", "Am quiet around strangers", "Make people feel at ease", "Am exacting in my work", "Often feel blue", "Am full of ideas"]
  
   const handle_score = () => {
      
@@ -82,7 +83,7 @@ export default function home_of_myriad () {
     alert("Kindly wait till your data is being processed!")
     try{
     const final_submit = await axios.post("https://project-c-backend-fx6m.onrender.com/submitsimulation", content)
-   
+     setLoading(true)
     if (final_submit.status == 200 || final_submit.status == 201) {
       alert("Your data was processed successfully!")
       setLoading(false)
