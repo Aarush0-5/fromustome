@@ -80,10 +80,11 @@ export default function home_of_myriad () {
       score: final_results,
       answer: response
     }
+    setLoading(true)
     alert("Kindly wait till your data is being processed!")
     try{
     const final_submit = await axios.post("https://project-c-backend-fx6m.onrender.com/submitsimulation", content)
-     setLoading(true)
+     
     if (final_submit.status == 200 || final_submit.status == 201) {
       alert("Your data was processed successfully!")
       setLoading(false)
