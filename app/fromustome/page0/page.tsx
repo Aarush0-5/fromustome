@@ -17,7 +17,7 @@ export default function Home() {
       console.log(result)
       if (result?.success){
         sessionStorage.setItem("memoryKey", memoryString);
-        router.push("/dashboard")
+        router.push("/fromustome/dashboard")
       }
   }
   const hideDisclaimer = () => {
@@ -112,7 +112,7 @@ export default function Home() {
 
         <button className="group relative bg-indigo-500 hover:bg-indigo-400 text-white font-bold py-4 px-10 rounded-full transition-all duration-500 
           shadow-[0_0_20px_rgba(99,102,241,0.4)] hover:shadow-[0_0_40px_rgba(99,102,241,0.6)] 
-          active:scale-95" onClick={()=>router.push('/page1')}>
+          active:scale-95" onClick={()=>router.push('/fromustome/page1')}>
           
           <span className="relative z-10">Start My Healing</span>
           
@@ -132,7 +132,7 @@ export default function Home() {
             />
 
             <button 
-              type="submit" // This makes 'Enter' work
+              type="submit"
               className="group relative bg-indigo-500 hover:bg-indigo-400 text-white font-bold py-4 px-10 rounded-full transition-all duration-500 
                 shadow-[0_0_20px_rgba(99,102,241,0.4)] hover:shadow-[0_0_40px_rgba(99,102,241,0.6)] 
                 active:scale-95"

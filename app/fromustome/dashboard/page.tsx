@@ -81,7 +81,7 @@ const handleUpdateReason = async (e: React.FormEvent)=> {
 const handleupdateReasons = async () => {
   const memorykey: any= sessionStorage.getItem("memoryKey")
   const result = await UpdateReasons(memorykey, updateReason)
-  router.push('/dashboard')
+  router.push('/fromustome/dashboard')
 }
 const Recoverydata = async (key: string) => {
     const results = await getRecoveryData(key)

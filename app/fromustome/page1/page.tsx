@@ -20,7 +20,6 @@ export default function Onboarding() {
     ncStartDate: "",
     selectedTriggers: [] as string[]
   });
-  const [formdata2, setFormData2]=useState<string>('')
   const [note,setNote]=useState("")
   const [showform1, setShowForm1]=useState(true) 
   const [showform2, setShowForm2]=useState(false)
@@ -116,7 +115,7 @@ const handledbData = async (e: React.FormEvent) => {
     if (datatosave.success) {
       sessionStorage.setItem("memoryKey", memoryString);
       setLoading(false);
-      router.push('/dashboard');
+      router.push('/fromustome/dashboard');
     } else {
       setNametaken(true)
       setLoading(false)
