@@ -88,10 +88,8 @@ export default function home_of_myriad () {
     if (final_submit.status == 200 || final_submit.status == 201) {
       alert("Your data was processed successfully!")
       setLoading(false)
-      console.log(final_submit.data)
       const m1 = JSON.parse(final_submit.data.message1)
       const m2 = JSON.parse(final_submit.data.message2)
-      console.log(m1, m2)
       setAnalysis(m1)
       setScores(m2)
       setShowResults(true)
