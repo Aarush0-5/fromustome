@@ -91,6 +91,7 @@ export default function home_of_myriad () {
       console.log(final_submit.data)
       const m1 = JSON.parse(final_submit.data.message1)
       const m2 = JSON.parse(final_submit.data.message2)
+      console.log(m1, m2)
       setAnalysis(m1)
       setScores(m2)
       setShowResults(true)
@@ -470,8 +471,8 @@ export default function home_of_myriad () {
             </div>
             <h2 className="text-3xl font-bold text-white tracking-tight">Well some portions of your personality helped you succeed in the various simulated lives , here are some goals you can have in order to develop that personality even in this life.</h2>
           </div>
-
-          <div className="space-y-4">
+         {
+          analysis?.ACTION_GOALS ?  <div className="space-y-4">
             {analysis?.ACTION_GOALS?.map((item, index) => (
               <div 
                 key={index} 
@@ -490,7 +491,8 @@ export default function home_of_myriad () {
                 </div>
               </div>
             ))}
-          </div>
+          </div> : <></>
+         }
         </div>
 
         <div className="mt-20 pt-10 border-t border-white/5 flex justify-between items-center text-stone-600 font-bold text-[10px] tracking-[0.4em] uppercase">
